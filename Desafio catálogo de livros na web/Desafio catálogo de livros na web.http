@@ -1,0 +1,6 @@
+@Desafio_catálogo_de_livros_na_web_HostAddress = http://localhost:5245
+
+GET {{Desafio_catálogo_de_livros_na_web_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
