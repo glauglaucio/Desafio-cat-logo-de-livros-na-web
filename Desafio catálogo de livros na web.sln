@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35825.156 d17.13
+VisualStudioVersion = 17.13.35825.156
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Desafio catálogo de livros na web", "Desafio catálogo de livros na web\Desafio catálogo de livros na web.csproj", "{856C174A-0F6A-434C-8C40-C5C4B91347D2}"
 EndProject
