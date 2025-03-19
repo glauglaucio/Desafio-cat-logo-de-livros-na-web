@@ -1,4 +1,4 @@
-﻿namespace Desafio_catálogo_de_livros_na_web.ViewModel
+﻿namespace Desafio_catálogo_de_livros_na_web.Application.ViewModel
 {
     public class LivroViewModel
     {
@@ -10,6 +10,6 @@
         public required string autor { get; set; }
         public required int editora_id { get; set; }
         public required string sinopse { get; set; }
-        public required byte[] imagem { get; set; }
+        public required IFormFile imagem { get; set; }
     }
 }

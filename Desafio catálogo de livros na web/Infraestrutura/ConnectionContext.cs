@@ -1,15 +1,24 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Desafio_catálogo_de_livros_na_web.Domain.Model;
+using Microsoft.EntityFrameworkCore;
 
 namespace Desafio_catálogo_de_livros_na_web.Infraestrutura
 {
     public class ConnectionContext : DbContext
     {
+        private readonly IConfiguration _configuration;
 
-        public DbSet<Model.Livro> Livros { get; set; }
+        public ConnectionContext(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
+
+        public DbSet<Livro> Livros { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql("Server=localhost;Port=5432;Database=catalogo_livros;Uid=postgres;Pwd=1423");
+            var connectionString = _configuration.GetConnectionString("DefaultConnection");
+            optionsBuilder.UseNpgsql(connectionString);
         }
     }
 }
