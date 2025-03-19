@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
-namespace Desafio_catálogo_de_livros_na_web.Model
+namespace Desafio_catálogo_de_livros_na_web.Domain.Model
 {
 
 
@@ -35,7 +35,8 @@ namespace Desafio_catálogo_de_livros_na_web.Model
         [StringLength(5000)]
         public string sinopse { get; private set; }
 
-        public byte[] imagem { get; private set; }
+        public string imagem { get; private set; }
+
 
         // Relações
         [ForeignKey("usuario_id")]
@@ -49,7 +50,7 @@ namespace Desafio_catálogo_de_livros_na_web.Model
 
         //Construtor
 
-        public Livro(int id, int usuario_id, string titulo, string isbn, int genero_id, string autor, int editora_id, string sinopse, byte[] imagem)
+        public Livro(int id, int usuario_id, string titulo, string isbn, int genero_id, string autor, int editora_id, string sinopse, string imagem)
         {
             this.id = id;
             this.usuario_id = usuario_id;

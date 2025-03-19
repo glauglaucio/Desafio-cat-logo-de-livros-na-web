@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
-namespace Desafio_catálogo_de_livros_na_web.Model
+namespace Desafio_catálogo_de_livros_na_web.Domain.Model
 {
     [Table("editoras")]
     public class Editora
