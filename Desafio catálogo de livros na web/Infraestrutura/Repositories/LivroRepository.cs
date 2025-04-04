@@ -37,7 +37,7 @@ namespace Desafio_catálogo_de_livros_na_web.Infraestrutura.Repositories
         public List<LivroDTO> Get(int usuarioId)
         {
             return _context.Livros
-                .Where(l => l.usuario_id == usuarioId)  // Filtra os livros pelo 'usuario_id'
+                .Where(l => l.usuario_id == usuarioId) 
                 .Select(b => new LivroDTO()
                 {
                     id = b.id,
