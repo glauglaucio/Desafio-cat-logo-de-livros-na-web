@@ -24,6 +24,9 @@ namespace Desafio_catálogo_de_livros_na_web.Domain.Model
         [Required]
         public string senha_hash { get; private set; }
 
+        public string? codigorecuperacao { get; set; }
+        public DateTimeOffset? codigorecuperacao_expira { get; set; }
+
         // Relacionamento com Livros
         public virtual ICollection<Livro> livros { get; set; } = new List<Livro>();
 
@@ -36,6 +39,12 @@ namespace Desafio_catálogo_de_livros_na_web.Domain.Model
             this.email = email;
             this.senha_hash = senha_hash;
         }
+
+        public void AtualizarSenha(string novaSenha)
+        {
+            senha_hash = BCrypt.Net.BCrypt.HashPassword(novaSenha);
+        }
+
         public Usuario() { }
     }
 }

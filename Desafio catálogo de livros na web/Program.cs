@@ -9,9 +9,12 @@ using AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Desafio_catálogo_de_livros_na_web.Infrastructure.Repositories;
+using BCrypt.Net;
+using Microsoft.Extensions.Caching.Memory;
+using Desafio_catálogo_de_livros_na_web.Application.Services;
 
 var builder = WebApplication.CreateBuilder(args);
-
 
 builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);  // **Adicionado**
 
@@ -19,12 +22,24 @@ builder.Services.AddDbContext<ConnectionContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"))  // **Adicionado**
 );
 builder.Services.AddTransient<ILivroRepository, LivroRepository>();
-// Add services to the container.
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("MyPolicy",
+       policy =>
+       {
+           policy.WithOrigins("http://localhost:8080")
+           .AllowAnyHeader()
+           .AllowAnyMethod();
+       });
+
+});
 
 builder.Services.AddControllers();
 
-
 builder.Services.AddAutoMapper(typeof(DomainToDTOMapping));
+
+builder.Services.AddMemoryCache();
 
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -74,16 +89,19 @@ builder.Services.AddAuthentication(x =>
     };
 });
 
+builder.Services.AddTransient<IUsuarioRepository, UsuarioRepository>();
 
-
+builder.Services.AddScoped<EmailService>();
 
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI(c => c.RoutePrefix = "swagger"); 
+    app.UseSwaggerUI(c => c.RoutePrefix = "swagger");
 }
+
+app.UseCors("MyPolicy");
 
 app.UseHttpsRedirection();
 
