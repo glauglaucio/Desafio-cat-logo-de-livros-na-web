@@ -12,11 +12,15 @@
             <div class="col-12 q-mt-sm text-right">
                 <q-btn flat color="primary" label="Esqueci a senha" @click="resetarSenha" />
             </div>
+            <div class="flex row col-12 justify-end q-pt-sm">
+                <q-btn flat color="secondary" label="Cadastrar" @click="cadastrar" />
+            </div>
+
             <div class="flex row col-12 justify-end q-pt-lg">
                 <q-btn :disable="loading" type="submit" color="primary">
                     <q-spinner-hourglass v-if="loading" color="white" size="1.5rem" />
                     <span v-else>Login</span>
-                </q-btn>    
+                </q-btn>
             </div>
         </form>
     </div>
@@ -37,7 +41,6 @@
 
     const router = useRouter();
 
-
     async function authenticate() {
         loading.value = true;
         await _loginService.Login(data.value).then((response) => {
@@ -51,5 +54,9 @@
 
     function resetarSenha() {
         router.push('/esqueci-senha');
+    }
+
+    function cadastrar() {
+        router.push('/cadastro');
     }
 </script>

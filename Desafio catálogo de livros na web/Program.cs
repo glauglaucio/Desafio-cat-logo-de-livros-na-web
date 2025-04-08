@@ -16,10 +16,10 @@ using Desafio_catálogo_de_livros_na_web.Application.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);  // **Adicionado**
+builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);  
 
 builder.Services.AddDbContext<ConnectionContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"))  // **Adicionado**
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"))  
 );
 builder.Services.AddTransient<ILivroRepository, LivroRepository>();
 

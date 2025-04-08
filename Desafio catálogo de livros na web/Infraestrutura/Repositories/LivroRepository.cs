@@ -17,23 +17,6 @@ namespace Desafio_catálogo_de_livros_na_web.Infraestrutura.Repositories
             _context.SaveChanges();
         }
 
-        //public List<LivroDTO> Get()
-        //{
-        //    return _context.Livros
-        //        .Select(b => new LivroDTO()
-        //        {
-        //            id = b.id,
-        //            titulo = b.titulo,
-        //            isbn = b.isbn,
-        //            autor = b.autor,
-        //            sinopse = b.sinopse,
-        //            imagem = b.imagem
-
-        //        })
-        //        .ToList();
-        //}
-
-
         public List<LivroDTO> Get(int usuarioId)
         {
             return _context.Livros

@@ -121,6 +121,9 @@ namespace Desafio_catálogo_de_livros_na_web.Controllers
                 return BadRequest("Sessão de recuperação expirou");
             }
 
+            if (string.IsNullOrWhiteSpace(dto.NovaSenha))
+                return BadRequest("A nova senha é obrigatória.");
+
             var usuario = await _usuarioRepository.BuscarEmail(email);
 
             usuario.codigorecuperacao = null;

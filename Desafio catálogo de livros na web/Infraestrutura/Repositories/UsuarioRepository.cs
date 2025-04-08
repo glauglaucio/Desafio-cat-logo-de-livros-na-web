@@ -35,5 +35,11 @@ namespace Desafio_catálogo_de_livros_na_web.Infrastructure.Repositories
                 await _context.SaveChangesAsync();
             }
         }
+
+        public async Task CriarUsuario(Usuario usuario)
+        {
+            _context.Usuarios.Add(usuario);
+            await _context.SaveChangesAsync();
+        }
     }
 }

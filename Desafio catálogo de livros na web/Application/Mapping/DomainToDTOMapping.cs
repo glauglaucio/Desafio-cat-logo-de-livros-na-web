@@ -10,7 +10,14 @@ namespace Desafio_catálogo_de_livros_na_web.Application.Mapping
         public DomainToDTOMapping()
         {
             CreateMap<Livro, LivroDTO>();
-        }   
 
+            CreateMap<UsuarioCadastroDTO, Usuario>()
+                .ConstructUsing(dto => new Usuario(
+                    dto.Nome,
+                    DateTime.SpecifyKind(DateTime.Parse(dto.DataNascimento), DateTimeKind.Utc),
+                    dto.Email,
+                    BCrypt.Net.BCrypt.HashPassword(dto.Senha)
+                ));
+        }
     }
 }

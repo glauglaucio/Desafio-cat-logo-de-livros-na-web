@@ -7,5 +7,7 @@ namespace Desafio_catálogo_de_livros_na_web.Infrastructure.Repositories
     {
         Task<Usuario> BuscarEmail(string email);
         Task AtualizarUsuario(Usuario usuario, string senhaEmTextoPuro = null);
+
+        Task CriarUsuario(Usuario usuario);
     }
 }
