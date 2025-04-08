@@ -32,6 +32,11 @@
     });
 
     async function RedefinirSenha() {
+        if (data.value.novaSenha.length < 6) {
+            alert("A senha deve ter no mínimo 6 caracteres!");
+            return;
+        }
+
         if (data.value.novaSenha !== data.value.confirmarSenha) {
             alert("As senhas não coincidem!");
             return;
