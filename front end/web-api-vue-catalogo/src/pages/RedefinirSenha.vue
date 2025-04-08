@@ -47,6 +47,6 @@
             } else {
                 alert("Erro ao redefinir senha.");
             }
-        } 
+        }
     }
 </script>

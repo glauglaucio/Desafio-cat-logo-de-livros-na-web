@@ -20,7 +20,7 @@
                 <q-btn :disable="loading" type="submit" color="primary">
                     <q-spinner-hourglass v-if="loading" color="white" size="1.5rem" />
                     <span v-else>Login</span>
-                </q-btn>
+                </q-btn>    
             </div>
         </form>
     </div>
