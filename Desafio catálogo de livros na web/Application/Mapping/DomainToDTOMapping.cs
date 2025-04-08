@@ -18,6 +18,6 @@ namespace Desafio_catálogo_de_livros_na_web.Application.Mapping
                     dto.Email,
                     BCrypt.Net.BCrypt.HashPassword(dto.Senha)
                 ));
-        }
+        }   
     }
 }
