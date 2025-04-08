@@ -42,7 +42,11 @@
             alert("Senha redefinida com sucesso!");
             router.push('/');
         } catch (error) {
-            alert("Erro ao redefinir senha.");
-        }
+            if (error.response && error.response.data) {
+                alert(error.response.data);
+            } else {
+                alert("Erro ao redefinir senha.");
+            }
+        } 
     }
 </script>

@@ -7,6 +7,7 @@ namespace Desafio_catálogo_de_livros_na_web.Domain.Model
     public class Usuario
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; private set; }
 
         [Required]
@@ -31,9 +32,8 @@ namespace Desafio_catálogo_de_livros_na_web.Domain.Model
         public virtual ICollection<Livro> livros { get; set; } = new List<Livro>();
 
         //Construtor
-        public Usuario(int id, string nome, DateTime data_nascimento, string email, string senha_hash)
+        public Usuario(string nome, DateTime data_nascimento, string email, string senha_hash)
         {
-            this.id = id;
             this.nome = nome;
             this.data_nascimento = data_nascimento;
             this.email = email;
