@@ -71,6 +71,8 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
+Key.Configure(builder.Configuration);
+
 var key = Encoding.ASCII.GetBytes(Key.Secret);
 builder.Services.AddAuthentication(x =>
 {
@@ -104,6 +106,8 @@ if (app.Environment.IsDevelopment())
 app.UseCors("MyPolicy");
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

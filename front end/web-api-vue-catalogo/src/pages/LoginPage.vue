@@ -45,7 +45,7 @@
         loading.value = true;
         await _loginService.Login(data.value).then((response) => {
             console.log(response);
-            alert(response.token.token);
+            alert(response.token);
         }).catch(() => {
             alert("Falha");
         });
